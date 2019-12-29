@@ -183,3 +183,35 @@ form{
     display: inline-block;
     padding: 10% 10% 10% 10%;
 }
+
+
+.memberPhoto
+{
+    width: 300px;
+    height: 400px;
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+a[href*="facebook.com/"] {
+background:url(https://www.facebook.com/favicon.ico) no-repeat left center;
+padding-left:19px;
+}
+
+a[href*="github.com/"] {
+background:url(https://www.github.com/favicon.ico) no-repeat left center;
+padding-left:40px;
+}
+
+a[href*="linkedin.com/"] {
+background:url(https://www.linkedin.com/favicon.ico) no-repeat left center;
+padding-left:19px;
+}
+
+.list{
+    display: grid;
+    grid-template-columns: 500px 500px;
+
+    row-gap: 60px;
+    column-gap: 60px;
+}
