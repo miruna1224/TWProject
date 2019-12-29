@@ -52,8 +52,8 @@ p {
 .menu-item
 {
     display: inline-block;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 0px;
+    margin-left: 0px;
     padding: 10px 40px 10px 40px;
     background: #fff2e6;
     background: #ffe5cb;
@@ -64,27 +64,25 @@ p {
     font-size: 14px;
     color: #999;
     vertical-align: bottom;
+}
 
-}    
-    
 .menu-item menu-item-active
 {
     position: relative;
     bottom : -1px;
     color: #c0392b;
-    padding: 15px 40px 15px 40px; 
-    margin-top: 0;   
+    padding: 40px 40px 40px 40px;
+    margin-top: 0;
 }
 
 hr
 {
-
     display: block;
     height: 1px;
     border: 0;
     border-top: 1px solid #f1f1f1;
     margin: 1em 0;
-    padding: 0; 
+    padding: 0;
 }
 
 .header {
@@ -94,7 +92,7 @@ hr
 .page-container {
   background: #E3E2DF;
   background: rgb(211, 211, 211);
-    
+
   width: 1100px;
   margin: 0 auto 30px auto;
   padding: 30px 20px;
@@ -130,7 +128,7 @@ time{
 .inline-block-images
 {
     display: inline-block;
-    vertical-align: top;       
+    vertical-align: top;
 }
 .inline-block-images
 {
@@ -179,4 +177,3 @@ time{
     width: 20px;
     height: 20px;
 }
-
