@@ -31,4 +31,3 @@ function extract_images ( i ){
   });
 
 }
-extract_images ( 1 );

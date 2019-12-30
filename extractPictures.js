@@ -1,12 +1,13 @@
 
+// MongoDB
+
 function extract_images ( i ){
   //Connect to the db
   var MongoClient = require('mongodb').MongoClient;
   MongoClient.connect("mongodb://localhost:27017/projectDB", {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
-      if (err) throw err;
+      if (err)  { return window.alert(err); }
       var dbo = db.db("projectDB");
-      dbo.collection("Images").find({}).toArray(function(err, result) {
-      if (err) throw err;
+      dbo.collection("Images").find().toArray(function(err, result) {
       m = "<img src=";
       m += result[i].path;
       m += `class="memberPhoto">`;
@@ -32,5 +33,4 @@ function extract_images ( i ){
       db.close();
     });
   });
-
 }

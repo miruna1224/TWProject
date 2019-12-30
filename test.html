@@ -1,6 +1,7 @@
 <html>
 <head>
   <script src="js_functions.js"></script>
+  <script src="extractPictures.js"></script>
   <style>
       .news{padding:10px; margin-top:2px;background-color:red;color:#fff;}
   </style>
@@ -12,13 +13,13 @@
         (function(){
             var newN = document.createElement('div');
             newN.innerHTML = 'TEXT ! TEXT ! TEXT !  ';
-            document.getElementById('aici').appendChild(newN);
+            document.getElementById('dd').appendChild(newN);
         })();
     </script>
     <script>
-      simplu();
-      // simple();
-      // extract_images(0);
+      simple();
+      mergipls();
+      extract_images(0);
     </script>
 </body>
 </html>
