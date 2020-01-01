@@ -3,6 +3,10 @@
 
 function extract_images ( i ){
   //Connect to the db
+  var newNode = document.createElement('div');
+  newNode.innerHTML = 'bai mergeee calm down si alte alea';
+  document.getElementById('aici').appendChild(newNode);
+
   var MongoClient = require('mongodb').MongoClient;
   MongoClient.connect("mongodb://localhost:27017/projectDB", {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
       if (err)  { return window.alert(err); }
