@@ -62,7 +62,7 @@ p {
     font-weight: bold;
     text-transform: uppercase;
     font-family: 'Lato', sans-serif;
-    font-size: 2 %;
+    font-size: 14px;
     color: #999;
     vertical-align: bottom;
 }
@@ -178,6 +178,16 @@ time{
     height: 20px;
 }
 
+.page-container-membri
+{
+
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-gap: 150px;
+    text-align: center;
+    padding: 10px;
+    
+}
 
 form{
     display: inline-block;
