@@ -5,6 +5,12 @@
       "img": "https://www.ase.ro/ase_responsive/pogo-slider/slider/academia-de-studii-economice-din-bucuresti-1.jpg",
       "about": "BLA BLA BLA AGfrumos, dragut, ceva bla",
       "id": 3
+    },
+    {
+      "name": "miruna",
+      "img": "https://nationalpostcom.files.wordpress.com/2019/11/quiilty1.jpg?quality=80&strip=all&w=780",
+      "about": "",
+      "id": 4
     }
   ]
 }
