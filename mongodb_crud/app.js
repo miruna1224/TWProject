@@ -9,6 +9,7 @@ const collectionI = "Images";
 const collectionA = "Accounts";
 const app = express();
 var cssHeaders = {'Content-Type': 'text/css'};
+var session = require('client-sessions');
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -66,6 +67,13 @@ app.get('/facultati.html',(req,res)=>{
 });
 
 
+app.use(session({
+  cookieName: 'session',
+  secret: 'random_string_goes_here',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
+}));
+
 
 // read
 app.get('/getTodos',(req,res)=>{
@@ -79,20 +87,6 @@ app.get('/getTodos',(req,res)=>{
         }
     });
 });
-
-// read Accounts
-app.get('/getAccounts',(req,res)=>{
-    // get all Todo documents within our todo collection
-    // send back to user as json
-    db.getDB().collection(collectionA).find({}).toArray((err,documents)=>{
-        if(err)
-            console.log(err);
-        else{
-            res.json(documents);
-        }
-    });
-});
-
 
 
 // update
@@ -116,26 +110,64 @@ app.put('/:id',(req,res)=>{
 
 app.post('/sign_up', function(req,res){
     var name = req.body.name;
-    var email =req.body.email;
+    var e =req.body.email;
     var pass = req.body.password;
     var phone =req.body.phone;
 
     var data = {
         "name": name,
-        "email":email,
+        "email":e,
         "password":pass,
         "phone":phone
     }
 
-    db.getDB().collection(collectionA).insertOne(data,function(err, collectionA){
+    var bl = 0;
+    var acc = db.getDB().collection(collectionA).find({email : e});
+
+    if (acc == 0 ){
+      db.getDB().collection(collectionA).insertOne(data,function(err, collectionA){
           if (err) throw err;
           console.log("Record inserted Successfully");
 
       });
-
+    }else{
+      console.log ("already in db");
+    }
     return res.redirect('home.html');
 })
 
+
+app.post('/login', function(req,res){
+    var e = req.body.email;
+    var u = req.session.name;
+    var pass = req.body.password;
+
+    var acc = db.getDB().collection(collectionA).findOne({email : e},  function(err, item) {
+        if (err) {
+            console.error(err);
+        }else if (item === null ) {
+            console.log ( "Email does not exist in db");
+            return res.redirect ('RegisterForm.html');
+        }else {
+            if(item.password == pass){
+              console.log ("succesfully connected");
+              req.session.user = e;
+              req.session.password = pass;
+              req.session.user = u;
+              return res.redirect('home.html');
+            }
+            else{
+              req.session.user = null;
+              req.session.password = null;
+              req.session.user = null;
+              console.log("wrong password");
+              console.log("try again");
+              return res.redirect('LoginForm.html');
+            }
+        }
+    });
+
+})
 
 
 //delete
