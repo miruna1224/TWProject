@@ -1,7 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 // name of our database
-const dbname = "projectTW";
+const dbname = "TWProject";
 // location of where our mongoDB database is located
 const url = "mongodb://localhost:27017";
 // Options for mongoDB

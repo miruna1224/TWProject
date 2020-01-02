@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require("body-parser");
+
 const path = require('path');
 const Joi = require('joi');
 
@@ -9,9 +10,11 @@ const collectionA = "Accounts";
 const app = express();
 var cssHeaders = {'Content-Type': 'text/css'};
 
-
-
-
+app.use(bodyParser.json());
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 // adding class
 app.use(express.static(__dirname));
 
@@ -110,32 +113,28 @@ app.put('/:id',(req,res)=>{
 
 
 //create
-app.post('/',(req,res,next)=>{
-    // Document to be inserted
-    const userInput = req.body;
 
-    // Validate document
-    // If document is invalid pass to error middleware
-    // else insert document within todo collection
-    Joi.validate(userInput,schema,(err,result)=>{
-        if(err){
-            const error = new Error("Invalid Input");
-            error.status = 400;
-            next(error);
-        }
-        else{
-            db.getDB().collection(collectionA).insertOne(userInput,(err,result)=>{
-                if(err){
-                    const error = new Error("Failed to insert Todo Document");
-                    error.status = 400;
-                    next(error);
-                }
-                else
-                    res.json({result : result, document : result.ops[0],msg : "Successfully inserted Todo!!!",error : null});
-            });
-        }
-    })
-});
+app.post('/sign_up', function(req,res){
+    var name = req.body.name;
+    var email =req.body.email;
+    var pass = req.body.password;
+    var phone =req.body.phone;
+
+    var data = {
+        "name": name,
+        "email":email,
+        "password":pass,
+        "phone":phone
+    }
+
+    db.getDB().collection(collectionA).insertOne(data,function(err, collectionA){
+          if (err) throw err;
+          console.log("Record inserted Successfully");
+
+      });
+
+    return res.redirect('home.html');
+})
 
 
 
