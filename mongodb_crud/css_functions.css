@@ -1,0 +1,217 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Open Sans', sans-serif;
+
+    color: #555;
+}
+
+body {
+    background: url('https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/1544622/1160/773/m1/fpnw/wm1/1-.jpg?1470852682&s=d8d16f535177ba48f4cff9a1eebc1d8c');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center bottom;
+    background-size: cover;
+}
+h3 {
+    font-family: 'Open Sans', sans-serif;
+}
+p {
+    font-family: 'Lato', sans-serif;
+}
+.title {
+    margin: 0%;
+    font-size: 210%;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    font-family: 'McLaren', cursive;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+}
+
+.subtitle {
+    color: black;
+    margin-bottom: 1em;
+    font-family: 'Lato', sans-serif;
+    font-family: 'McLaren', cursive;
+    font-size: 100%;
+    row-gap: 1em;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+}
+.menu {
+
+    width: 100%;
+    margin: 2.5% auto 5% auto;
+    text-align: center;
+}
+.menu-item
+{
+    display: inline-block;
+    margin-top: 5%;
+    margin-right: 0%;
+    margin-left: 0%;
+    padding: 2% 5% 2% 5%;
+    background: #fff2e6;
+    background: #ffe5cb;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-size: 2 %;
+    color: #999;
+    vertical-align: bottom;
+}
+
+.menu-item menu-item-active
+{
+    position: relative;
+    bottom : -1px;
+    color: #c0392b;
+    margin-top: 0;
+}
+
+hr
+{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #f1f1f1;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.header {
+    margin-top: 5%;
+}
+
+.page-container {
+  background: #E3E2DF;
+  background: rgb(211, 211, 211);
+
+  width: 88%;
+  margin: 0 auto 30px auto;
+  padding: 3% 2% 3% 2%;
+  border: 1px solid #C2CAD0;
+  box-shadow: 0px 5px  #c0392b;
+  border-radius: 0px 0px 5% 5%;
+  display: flex;
+}
+h2{
+    font-weight: bold;
+    font-size: 35px;
+    font-weight: bolder;
+}
+.skills{
+    margin-left: 60px;
+    text-align: left;
+    font-family: fantasy;
+    font-weight: lighter;
+}
+li {
+  background: #cde5ff;
+  margin: 5px;
+}
+time{
+    background: #cde5ff;
+    margin: 5px;
+}
+.inline-block-images img{
+    width: 300px;
+    height: 222px;
+}
+
+.inline-block-images
+{
+    display: inline-block;
+    vertical-align: top;
+}
+.inline-block-images
+{
+    display: flex;
+    vertical-align: top;
+    justify-content: space-between;
+}
+
+.grid_container{
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    gap: 30px;
+}
+
+.img_about{
+    width: 250px;
+    height: 250px;
+}
+
+.inline-block-images
+{
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.side-conections
+{
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 20px;
+    padding: 10px 40px 10px 40px;
+    background: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    color: #999;
+    vertical-align: bottom;
+}
+
+.img_contact
+{
+    width: 20px;
+    height: 20px;
+}
+
+
+form{
+    display: inline-block;
+    padding: 10% 10% 10% 10%;
+}
+
+
+.memberPhoto
+{
+    width: 300px;
+    height: 400px;
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+a[href*="facebook.com/"] {
+background:url(https://www.facebook.com/favicon.ico) no-repeat left center;
+padding-left:19px;
+}
+
+a[href*="github.com/"] {
+background:url(https://www.github.com/favicon.ico) no-repeat left center;
+padding-left:40px;
+}
+
+a[href*="linkedin.com/"] {
+background:url(https://www.linkedin.com/favicon.ico) no-repeat left center;
+padding-left:19px;
+}
+
+.list{
+    display: grid;
+    grid-template-columns: 500px 500px;
+
+    row-gap: 60px;
+    column-gap: 60px;
+}

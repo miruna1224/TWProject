@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const path = require('path');
+const Joi = require('joi');
 
 const db = require("./db");
 const collectionI = "Images";
@@ -8,16 +9,77 @@ const collectionA = "Accounts";
 const app = express();
 
 
+
+// adding class
+app.use(express.static(__dirname));
+
+
+
+// schema used for data validation for our todo document
+const schema = Joi.object().keys({
+    todo : Joi.string().required()
+});
+
+
+// parses json data sent to us by the user
+app.use(bodyParser.json());
+
+
 // serve static html file to user
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname, 'membri.html'));
+    res.sendFile(path.join(__dirname, 'home.html'));
 });
+
+app.get('/membri.html',(req,res)=>{
+  res.sendFile(path.join(__dirname, 'membri.html'));
+});
+
+app.get('/LoginForm.html',(req,res)=>{
+  res.sendFile(path.join(__dirname, 'LoginForm.html'));
+});
+
+app.get('/RegisterForm.html',(req,res)=>{
+  res.sendFile(path.join(__dirname, 'RegisterForm.html'));
+});
+
+app.get('/home.html',(req,res)=>{
+  res.sendFile(path.join(__dirname, 'home.html'));
+});
+
+app.get('/admitere.html',(req,res)=>{
+  res.sendFile(path.join(__dirname, 'admitere.html'));
+});
+
+
+app.get('/bac.html',(req,res)=>{
+  res.sendFile(path.join(__dirname, 'bac.html'));
+});
+
+
+app.get('/facultati.html',(req,res)=>{
+  res.sendFile(path.join(__dirname, 'facultati.html'));
+});
+
+
 
 // read
 app.get('/getTodos',(req,res)=>{
     // get all Todo documents within our todo collection
     // send back to user as json
     db.getDB().collection(collectionI).find({}).toArray((err,documents)=>{
+        if(err)
+            console.log(err);
+        else{
+            res.json(documents);
+        }
+    });
+});
+
+// read Accounts
+app.get('/getAccounts',(req,res)=>{
+    // get all Todo documents within our todo collection
+    // send back to user as json
+    db.getDB().collection(collectionA).find({}).toArray((err,documents)=>{
         if(err)
             console.log(err);
         else{

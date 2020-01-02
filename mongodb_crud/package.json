@@ -11,10 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
     "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "jquery": "^3.4.1",
     "mongo": "^0.1.0",
     "mongod": "^2.0.0",
     "mongodb": "^3.4.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "popper.js": "^1.16.0"
   }
 }
