@@ -30,44 +30,36 @@ app.use(bodyParser.json());
 // serve static html file to user
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname, 'home.html'));
-    res.writeHead(200, cssHeaders);
 });
 
 app.get('/membri.html',(req,res)=>{
   res.sendFile(path.join(__dirname, 'membri.html'));
-  res.writeHead(200, cssHeaders);
 });
 
 app.get('/LoginForm.html',(req,res)=>{
   res.sendFile(path.join(__dirname, 'LoginForm.html'));
-  res.writeHead(200, cssHeaders);
 });
 
 app.get('/RegisterForm.html',(req,res)=>{
   res.sendFile(path.join(__dirname, 'RegisterForm.html'));
-  res.writeHead(200, cssHeaders);
 });
 
 app.get('/home.html',(req,res)=>{
   res.sendFile(path.join(__dirname, 'home.html'));
-  res.writeHead(200, cssHeaders);
 });
 
 app.get('/admitere.html',(req,res)=>{
   res.sendFile(path.join(__dirname, 'admitere.html'));
-  res.writeHead(200, cssHeaders);
 });
 
 
 app.get('/bac.html',(req,res)=>{
   res.sendFile(path.join(__dirname, 'bac.html'));
-  res.writeHead(200, cssHeaders);
 });
 
 
 app.get('/facultati.html',(req,res)=>{
   res.sendFile(path.join(__dirname, 'facultati.html'));
-  res.writeHead(200, cssHeaders);
 });
 
 
@@ -76,7 +68,6 @@ app.get('/facultati.html',(req,res)=>{
 app.get('/getTodos',(req,res)=>{
     // get all Todo documents within our todo collection
     // send back to user as json
-    res.writeHead(200, cssHeaders);
     db.getDB().collection(collectionI).find({}).toArray((err,documents)=>{
         if(err)
             console.log(err);
@@ -90,7 +81,6 @@ app.get('/getTodos',(req,res)=>{
 app.get('/getAccounts',(req,res)=>{
     // get all Todo documents within our todo collection
     // send back to user as json
-    res.writeHead(200, cssHeaders);
     db.getDB().collection(collectionA).find({}).toArray((err,documents)=>{
         if(err)
             console.log(err);
