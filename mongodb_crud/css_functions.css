@@ -221,7 +221,6 @@ padding-left:19px;
 .list{
     display: grid;
     grid-template-columns: 500px 500px;
-
     row-gap: 60px;
     column-gap: 60px;
 }
