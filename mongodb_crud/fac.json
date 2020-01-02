@@ -7,10 +7,22 @@
       "id": 3
     },
     {
-      "name": "miruna",
+      "name": "Faculatea pisicilor amatoare",
       "img": "https://nationalpostcom.files.wordpress.com/2019/11/quiilty1.jpg?quality=80&strip=all&w=780",
       "about": "",
       "id": 4
+    },
+    {
+      "id": 2,
+      "name": "Politehnica",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Universitatea_Politehnica_din_Bucure%C8%99ti-2006_0604UPB0032.jpg",
+      "about": "BLA BLA BLA AGAIN, BLA BLA BLA AGAIN, BLA BLA BLA AGAIN, BLA BLA BLA AGAIN, BLA BLA BLA AGAIN, BLA BLA BLA AGAIN, BLA BLA BLA AGAIN, BLA BLA BLA AGAIN, BLA BLA BLA AGAIN"
+    },
+    {
+      "name": "ASE",
+      "img": "https://www.ase.ro/ase_responsive/pogo-slider/slider/academia-de-studii-economice-din-bucuresti-1.jpg",
+      "about": "BLA BLA BLA AGfrumos, dragut, ceva bla",
+      "id": 3
     }
   ]
 }

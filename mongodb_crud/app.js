@@ -80,6 +80,20 @@ app.get('/getTodos',(req,res)=>{
     });
 });
 
+// read Accounts
+app.get('/getAccounts',(req,res)=>{
+    // get all Todo documents within our todo collection
+    // send back to user as json
+    db.getDB().collection(collectionA).find({}).toArray((err,documents)=>{
+        if(err)
+            console.log(err);
+        else{
+            res.json(documents);
+        }
+    });
+});
+
+
 
 // update
 app.put('/:id',(req,res)=>{
@@ -102,56 +116,26 @@ app.put('/:id',(req,res)=>{
 
 app.post('/sign_up', function(req,res){
     var name = req.body.name;
-    var e =req.body.email;
+    var email =req.body.email;
     var pass = req.body.password;
     var phone =req.body.phone;
 
     var data = {
         "name": name,
-        "email":e,
+        "email":email,
         "password":pass,
         "phone":phone
     }
 
-    var bl = 0;
-    var acc = db.getDB().collection(collectionA).find({email : e});
-
-    if (acc == 0 ){
-      db.getDB().collection(collectionA).insertOne(data,function(err, collectionA){
+    db.getDB().collection(collectionA).insertOne(data,function(err, collectionA){
           if (err) throw err;
           console.log("Record inserted Successfully");
 
       });
-    }else{
-      console.log ("already in db");
-    }
+
     return res.redirect('home.html');
 })
 
-app.post('/login', function(req,res){
-    var e = req.body.email;
-    var pass = req.body.password;
-
-    var acc = db.getDB().collection(collectionA).findOne({email : e},  function(err, item) {
-        if (err) {
-            console.error(err);
-        }else if (item === null ) {
-            console.log ( "Email does not exist in db");
-            return res.redirect ('RegisterForm.html');
-        }else {
-            if(item.password == pass){
-              console.log ("succesfully connected");
-              return res.redirect('home.html');
-            }
-            else{
-              console.log("wrong password");
-              console.log("try again");
-              return res.redirect('LoginForm.html');
-            }
-        }
-    });
-
-})
 
 
 //delete

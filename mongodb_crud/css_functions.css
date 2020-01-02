@@ -224,3 +224,16 @@ padding-left:19px;
     row-gap: 60px;
     column-gap: 60px;
 }
+
+.gif{
+    padding-left: 35%;
+}
+
+.subtitle-home{
+    padding-left: 35%;
+}
+
+.scris-fancy{
+    font-family: monospace;
+    font-size: large;
+}
