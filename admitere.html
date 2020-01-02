@@ -31,12 +31,18 @@
         <a class="menu-item" href="membri.html"><i class="fa fa-envelope"></i> Membrii Fondatori</a>
     </nav>
     <div class="page-container">
-        <form method="GET">
-            <input type="radio" name="gender" value="male" checked> Male<br>
-            <input type="radio" name="gender" value="female"> Female<br>
-            <input type="radio" name="gender" value="other"> Other<br><br>
-            <input type="submit">
-        </form>
+       <div class="testQuiz">
+            <h3>ADMITERE RANDOM EXERCISES</h3>
+            <div class="quiz-container">
+                <div id="quiz"></div>
+            </div>
+            <button id="previous">Previous Question</button>
+            <button id="next">Next Question</button>
+            <button id="submit">Submit Quiz</button>
+            <button id="try-again">Try Again</button>
+            <div id="results"></div>
+            <script src="quizAdmitere.js"></script>
+        </div>
     </div>
 </body>
 
