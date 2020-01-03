@@ -17,16 +17,16 @@ h3{
   color: #fff;
 }
 .question{
-  font-size: 20px;
-  margin-bottom: 10px;
-  width: 400px;
+  font-size: 87%;
+  margin-bottom: 10%;
+  width: 88%;
 }
 .answers {
-  margin-bottom: 20px;
+  margin-bottom: 20%;
   text-align: left;
   display: inline-block;
-  font-size: 17px;
-  width: 700px;
+  font-size: 87%;
+  width: 88%;
 }
 .answers label{
   display: block;
@@ -62,11 +62,12 @@ button:hover{
 }
 .quiz-container{
     position: relative;
+		align: center;
     height: 200px;
-    margin-top: 40px;
+    margin-top: 10%;
     margin-bottom: 60px;
 }
 
 .testQuiz{
-    padding-left: 200px;
+    padding-left: 20%;
 }

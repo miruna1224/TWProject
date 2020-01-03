@@ -111,15 +111,17 @@ function appendDogsToDOM(dogs) {
     for (let i = 0; i < dogs.length; i++) {
         // create image obj
         let img = document.createElement('img');
-        img.width = 250;
-        img.height = 200;
+        img.style.width = '74%';
+        img.height = 180;
         img.src = dogs[i].img;
         // create name obj
         let name = document.createElement('span');
         name.innerText = dogs[i].name;
+        name.style.width = '84%';
         //create about obj
         let about = document.createElement('p');
         about.innerText = dogs[i].about;
+        about.style.width = '84%';
         // create button and event for edit and delete
         let editButton = document.createElement('button')
         // add event on btn and pass dog id more at https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
@@ -140,7 +142,7 @@ function appendDogsToDOM(dogs) {
         let container = document.createElement('div');
         container.style.display = 'grid';
         container.style.border = 'solid 2px yellow';
-        container.style.padding = '30px';
+        container.style.padding = '15%';
         container.style.backgroundColor = '#e6e6ff';
         // append elements to container
         container.appendChild(img);

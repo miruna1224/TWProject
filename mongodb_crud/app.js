@@ -12,9 +12,6 @@ var cssHeaders = {'Content-Type': 'text/css'};
 
 
 
-const sessionStorage = require('node-sessionstorage')
-
-
 // adding class
 app.use(express.static(__dirname));
 
@@ -32,8 +29,6 @@ app.use(bodyParser.json());
 
 // serve static html file to user
 app.get('/',(req,res)=>{
-    sessionStorage.setItem('name', '0');
-    console.log('0');
     res.sendFile(path.join(__dirname, 'home2.html'));
 });
 
@@ -127,7 +122,6 @@ app.post('/sign_up', function(req,res){
       db.getDB().collection(collectionA).insertOne(data,function(err, collectionA){
           if (err) throw err;
           console.log("Record inserted Successfully");
-
       });
     }else{
       console.log ("already in db");
@@ -142,20 +136,16 @@ app.post('/login', function(req,res){
 
     var acc = db.getDB().collection(collectionA).findOne({email : e},  function(err, item) {
         if (err) {
-            sessionStorage.setItem('name', '0');
             console.error(err);
         }else if (item === null ) {
             console.log ( "Email does not exist in db");
-            sessionStorage.setItem('name', 'hooman');
             return res.redirect ('RegisterForm.html');
         }else {
             if(item.password == pass){
-              sessionStorage.setItem('name', 'hooman');
               console.log ("succesfully connected");
               return res.redirect('home.html');
             }
             else{
-              sessionStorage.setItem('name', '0');
               console.log("wrong password");
               console.log("try again");
               return res.redirect('LoginForm.html');

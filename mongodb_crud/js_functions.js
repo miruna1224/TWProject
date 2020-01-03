@@ -36,3 +36,9 @@ function Logout () {
   sessionStorage.clear();
   sessionStorage.setItem('name', 'null');
 }
+
+
+
+
+
+var window.iAmGlobal = "Welcome";
