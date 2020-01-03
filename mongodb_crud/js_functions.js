@@ -15,7 +15,9 @@ function mergipls(){
 
 
  function navi ( ){
-   if ( req.session.user != null &&  req.session.password != null && req.session.user != null ){
+   let data = sessionStorage.getItem('name');
+   console.log (data);
+   if ( data != "null" ){
      document.write ( '<a class="menu-item" href="LoginForm.html"><i class="fa fa-file-text"></i> Login </a>');
      document.write ( '<a class="menu-item" href="RegisterForm.html"><i class="fa fa-heart"></i> Signin </a>');
      console.log( "aici");
@@ -29,8 +31,8 @@ function mergipls(){
    }
  }
 
-function Logout(){
-  req.session.user = null;
-    req.session.email = null;
-      req.session.user = null;
+
+function Logout () {
+  sessionStorage.clear();
+  sessionStorage.setItem('name', 'null');
 }

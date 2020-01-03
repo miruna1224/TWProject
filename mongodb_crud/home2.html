@@ -15,19 +15,10 @@
 </head>
 
 <body>
-  <nav class="menu">
-    <script>
-        let data = sessionStorage.getItem('name');
-        if ( data == '0' ){
-          document.write ( '<a class="menu-item" href="LoginForm.html"><i class="fa fa-file-text"></i> Login </a>');
-          document.write ( '<a class="menu-item" href="RegisterForm.html"><i class="fa fa-heart"></i> Signin </a>');
-        }
-        else{
-          document.write( '<a class="menu-item"><i class="fa fa-file-heart"></i> WELCOME,' + data  + ' </a>' );
-          document.write ( '<a  onclick="Logout()" class="menu-item" href="home.html"><i class="fa fa-heart"></i> LOGOUT </a>');
-        }
-        </script>
-  </nav>
+    <nav class="menu">
+        <a class="menu-item" href="LoginForm.html"><i class="fa fa-file-text"></i> Login </a>
+        <a class="menu-item" href="RegisterForm.html"><i class="fa fa-heart"></i> Signin </a>
+    </nav>
     <header class="header">
         <h1 class="title">EASY HIGH SCHOOL END</h1>
         <h2 class="subtitle">Bacalaureat | Admitere | Facultati</h2>
@@ -60,6 +51,7 @@
 
         </div>
     </div>
+
 </body>
 
 </html>

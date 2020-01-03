@@ -9,13 +9,12 @@ const collectionI = "Images";
 const collectionA = "Accounts";
 const app = express();
 var cssHeaders = {'Content-Type': 'text/css'};
-var session = require('client-sessions');
 
-app.use(bodyParser.json());
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+
+
+const sessionStorage = require('node-sessionstorage')
+
+
 // adding class
 app.use(express.static(__dirname));
 
@@ -33,7 +32,9 @@ app.use(bodyParser.json());
 
 // serve static html file to user
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname, 'home.html'));
+    sessionStorage.setItem('name', '0');
+    console.log('0');
+    res.sendFile(path.join(__dirname, 'home2.html'));
 });
 
 app.get('/membri.html',(req,res)=>{
@@ -46,6 +47,10 @@ app.get('/LoginForm.html',(req,res)=>{
 
 app.get('/RegisterForm.html',(req,res)=>{
   res.sendFile(path.join(__dirname, 'RegisterForm.html'));
+});
+
+app.get('/home2.html',(req,res)=>{
+  res.sendFile(path.join(__dirname, 'home.html'));
 });
 
 app.get('/home.html',(req,res)=>{
@@ -67,12 +72,6 @@ app.get('/facultati.html',(req,res)=>{
 });
 
 
-app.use(session({
-  cookieName: 'session',
-  secret: 'random_string_goes_here',
-  duration: 30 * 60 * 1000,
-  activeDuration: 5 * 60 * 1000,
-}));
 
 
 // read
@@ -139,27 +138,24 @@ app.post('/sign_up', function(req,res){
 
 app.post('/login', function(req,res){
     var e = req.body.email;
-    var u = req.session.name;
     var pass = req.body.password;
 
     var acc = db.getDB().collection(collectionA).findOne({email : e},  function(err, item) {
         if (err) {
+            sessionStorage.setItem('name', '0');
             console.error(err);
         }else if (item === null ) {
             console.log ( "Email does not exist in db");
+            sessionStorage.setItem('name', 'hooman');
             return res.redirect ('RegisterForm.html');
         }else {
             if(item.password == pass){
+              sessionStorage.setItem('name', 'hooman');
               console.log ("succesfully connected");
-              req.session.user = e;
-              req.session.password = pass;
-              req.session.user = u;
               return res.redirect('home.html');
             }
             else{
-              req.session.user = null;
-              req.session.password = null;
-              req.session.user = null;
+              sessionStorage.setItem('name', '0');
               console.log("wrong password");
               console.log("try again");
               return res.redirect('LoginForm.html');
