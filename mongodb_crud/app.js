@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 
 // serve static html file to user
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname, 'home2.html'));
+    res.sendFile(path.join(__dirname, 'home.html'));
 });
 
 app.get('/membri.html',(req,res)=>{
@@ -90,7 +90,7 @@ app.put('/:id',(req,res)=>{
     // Document used to update
     const userInput = req.body;
     // Find Document By ID and Update
-    db.getDB().collection(collectionA).findOneAndUpdate({_id : db.getPrimaryKey(todoID)},{$set : {todo : userInput.todo}},{returnOriginal : false},(err,result)=>{
+    db.getDB().collection("Accounts").findOneAndUpdate({_id : db.getPrimaryKey(todoID)},{$set : {email : userInput.email}},(err,result)=>{
         if(err)
             console.log(err);
         else{
@@ -102,58 +102,62 @@ app.put('/:id',(req,res)=>{
 
 //create
 
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/gfg',  { useNewUrlParser: true , useUnifiedTopology: true });
+var db2=mongoose.connection;
+db2.on('error', console.log.bind(console, "connection error"));
+db2.once('open', function(callback){
+    console.log("connection succeeded");
+})
+
+
+
+
+app.use(bodyParser.json());
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+
+
+
 app.post('/sign_up', function(req,res){
     var name = req.body.name;
-    var e =req.body.email;
+    var email =req.body.email;
     var pass = req.body.password;
     var phone =req.body.phone;
 
     var data = {
         "name": name,
-        "email":e,
+        "email":email,
         "password":pass,
         "phone":phone
     }
 
-    var bl = 0;
-    var acc = db.getDB().collection(collectionA).find({email : e});
 
-    if (acc == 0 ){
-      db.getDB().collection(collectionA).insertOne(data,function(err, collectionA){
-          if (err) throw err;
-          console.log("Record inserted Successfully");
-      });
-    }else{
-      console.log ("already in db");
-    }
-    return res.redirect('home.html');
-})
-
-
-app.post('/login', function(req,res){
-    var e = req.body.email;
-    var pass = req.body.password;
-
-    var acc = db.getDB().collection(collectionA).findOne({email : e},  function(err, item) {
-        if (err) {
-            console.error(err);
-        }else if (item === null ) {
-            console.log ( "Email does not exist in db");
-            return res.redirect ('RegisterForm.html');
-        }else {
-            if(item.password == pass){
-              console.log ("succesfully connected");
-              return res.redirect('home.html');
-            }
-            else{
-              console.log("wrong password");
-              console.log("try again");
-              return res.redirect('LoginForm.html');
-            }
+     db2.collection('Accounts').findOne({'email': email}, function(err, resm){
+        console.log(resm); // show found account details
+        if(resm != null){
+          console.log( "This email is used in another account");
+          return res.redirect('LoginForm.html')
         }
+        else{
+          db2.collection('Accounts').insertOne(data,function(err, collection){
+              if (err) {
+                throw err;
+                console.log("error");
+              }
+              console.log("Record inserted Successfully");
+              return res.redirect('home.html')
+          });
+        }
+        if(err) throw err;
     });
 
 })
+
 
 
 //delete
