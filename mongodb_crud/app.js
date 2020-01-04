@@ -104,7 +104,7 @@ app.put('/:id',(req,res)=>{
 
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/gfg',  { useNewUrlParser: true , useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/TWProject',  { useNewUrlParser: true , useUnifiedTopology: true });
 var db2=mongoose.connection;
 db2.on('error', console.log.bind(console, "connection error"));
 db2.once('open', function(callback){
@@ -157,6 +157,41 @@ app.post('/sign_up', function(req,res){
     });
 
 })
+
+
+
+
+// LoginForm
+
+app.post('/login', function(req,res){
+    var email =req.body.email;
+    var pass = req.body.password;
+
+
+     db2.collection('Accounts').findOne({'email': email}, function(err, resm){
+        console.log(resm); // show found account details
+        if(err) throw err;
+        if(resm == null){
+          console.log( "This email is not used in an account");
+          return res.redirect('RegisterForm.html')
+        }
+        else{
+          if(resm.password == pass){
+            console.log("Succesfully connected!!!");
+            return res.redirect('home.html');
+          }
+          else{
+             console.log ("Wrong password. Try again!");
+             return res.redirect('LoginForm.html');
+           }
+        }
+    });
+
+})
+
+
+
+
 
 
 
