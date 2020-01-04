@@ -233,6 +233,7 @@ padding-left:19px;
     grid-template-columns: 80% 80%;
     row-gap: 6%;
     column-gap: 6%;
+    padding-bottom: 60px;
 }
 
 .gif{
@@ -256,4 +257,5 @@ padding-left:19px;
 .facultys-container{
   height: 70%;
   width: 55%;
+  padding-bottom: 60%;
 }

@@ -10,6 +10,24 @@ const collectionA = "Accounts";
 const app = express();
 var cssHeaders = {'Content-Type': 'text/css'};
 
+// for session
+const uuid = require('uuid/v4')
+const session = require('express-session')
+
+app.use(session({
+  genid: (req) => {
+    // console.log('Inside the session middleware')
+    // console.log(req.sessionID)
+    return uuid() // use UUIDs for session IDs
+  },
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
+
+
+
+
 
 
 // adding class
@@ -29,6 +47,7 @@ app.use(bodyParser.json());
 
 // serve static html file to user
 app.get('/',(req,res)=>{
+    req.sessionID = '';
     res.sendFile(path.join(__dirname, 'home.html'));
 });
 
@@ -42,14 +61,6 @@ app.get('/LoginForm.html',(req,res)=>{
 
 app.get('/RegisterForm.html',(req,res)=>{
   res.sendFile(path.join(__dirname, 'RegisterForm.html'));
-});
-
-app.get('/home2.html',(req,res)=>{
-  res.sendFile(path.join(__dirname, 'home.html'));
-});
-
-app.get('/home.html',(req,res)=>{
-  res.sendFile(path.join(__dirname, 'home.html'));
 });
 
 app.get('/admitere.html',(req,res)=>{
@@ -150,7 +161,9 @@ app.post('/sign_up', function(req,res){
                 console.log("error");
               }
               console.log("Record inserted Successfully");
-              return res.redirect('home.html')
+              req.sessionID = name;
+              console.log ("Welcome, ",  req.sessionID);
+              return res.redirect('home2.html')
           });
         }
         if(err) throw err;
@@ -178,7 +191,9 @@ app.post('/login', function(req,res){
         else{
           if(resm.password == pass){
             console.log("Succesfully connected!!!");
-            return res.redirect('home.html');
+            req.sessionID = resm.name;
+            console.log ("Welcome, ",  req.sessionID);
+            return res.redirect('home2.html');
           }
           else{
              console.log ("Wrong password. Try again!");

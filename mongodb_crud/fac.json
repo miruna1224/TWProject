@@ -3,14 +3,14 @@
     {
       "name": "ASE",
       "img": "https://www.ase.ro/ase_responsive/pogo-slider/slider/academia-de-studii-economice-din-bucuresti-1.jpg",
-      "about": "BLA BLA BLA AGfrumos, dragut, ceva bla",
-      "id": 3
+      "about": "Academia de Studii Economice din București, abreviat ASE, este o instituție publică de învățământ superior din București, România, fondată în anul 1913. Este cea mai importantă instituție de învățământ superior cu profil economic din România. ",
+      "id": 1
     },
     {
-      "name": "miruna",
-      "img": "https://nationalpostcom.files.wordpress.com/2019/11/quiilty1.jpg?quality=80&strip=all&w=780",
-      "about": "",
-      "id": 4
+      "name": "FMI",
+      "img": "https://unibuc.ro/wp-content/uploads/2019/01/Facultatea-de-Matematica-si-Informatica.jpg",
+      "about": "Universitatea din București este o universitate de stat din București și una dintre cele mai prestigioase instituții de învățământ superior din România. Fondată în 1864, Universitatea din București este a doua universitate modernă a României, după Universitatea din Iași.",
+      "id": 2
     }
   ]
 }
